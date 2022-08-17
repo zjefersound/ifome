@@ -1,4 +1,4 @@
-import { Image, Text, TextInput, View } from "react-native";
+import { Image, ScrollView, Text, TextInput, View } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,8 +8,10 @@ import {
   SearchIcon,
   UserIcon,
 } from "react-native-heroicons/outline";
+import Categories from "../components/Categories";
+import FeaturedRow from "../components/FeaturedRow";
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -19,7 +21,7 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className="flex-1 bg-white pt-5">
       {/* Header */}
       <View className="flex-row items-center pb-3 mx-4 space-x-2">
         <Image
@@ -53,6 +55,30 @@ export default function HomeScreen() {
       </View>
 
       {/* Body */}
+      <ScrollView>
+        {/* Categories */}
+        <Categories />
+        {/* Featured*/}
+        <FeaturedRow
+          id="123"
+          title="Featured"
+          description="Paid placements from our partners"
+        />
+        {/* Tasty Discounts */}
+        <FeaturedRow
+          id="124"
+          title="Tasty Discounts"
+          description="Everyone's been enjoying these juicy discounts!"
+        />
+        {/* Near you */}
+        <FeaturedRow
+          id="125"
+          title="Offers near you!"
+          description="Why not support your local restaurant tonight!"
+        />
+      </ScrollView>
     </SafeAreaView>
   );
-}
+};
+
+export default HomeScreen;
