@@ -1,6 +1,7 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
+import RestaurantCard from "./RestaurantCard";
 
 interface Props {
   id: string;
@@ -22,9 +23,61 @@ const FeaturedRow: React.FC<Props> = ({ description, title }) => {
           paddingHorizontal: 16,
         }}
         showsHorizontalScrollIndicator={false}
-        className="pt-4"
+        className="pt-4 pb-5"
       >
         {/* Restaurant Cards */}
+        <RestaurantCard 
+          id={123}
+          imageUrl="https://links.papareact.com/gn7"
+          title="Yoi Sushi"
+          rating={4.5}
+          genre="Japanese"
+          address="123 Main St"
+          short_description="Little short description for this"
+          dishes={[]}
+          lat={209}
+          long={32}
+
+        />
+        <RestaurantCard 
+          id={123}
+          imageUrl="https://links.papareact.com/gn7"
+          title="Yoi Sushi"
+          rating={4.5}
+          genre="Japanese"
+          address="123 Main St"
+          short_description="Little short description for this"
+          dishes={[]}
+          lat={209}
+          long={32}
+
+        />
+        <RestaurantCard 
+          id={123}
+          imageUrl="https://links.papareact.com/gn7"
+          title="Yoi Sushi"
+          rating={4.5}
+          genre="Japanese"
+          address="123 Main St"
+          short_description="Little short description for this"
+          dishes={[]}
+          lat={209}
+          long={32}
+
+        />
+        <RestaurantCard 
+          id={123}
+          imageUrl="https://links.papareact.com/gn7"
+          title="Yoi Sushi"
+          rating={4.5}
+          genre="Japanese"
+          address="123 Main St"
+          short_description="Little short description for this"
+          dishes={[]}
+          lat={209}
+          long={32}
+
+        />
       </ScrollView>
     </View>
   );
