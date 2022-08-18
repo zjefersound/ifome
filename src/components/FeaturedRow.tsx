@@ -3,6 +3,7 @@ import React from "react";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 import RestaurantCard from "./RestaurantCard";
 import IRestaurant from "../models/IRestaurant";
+import colors from "../theme/colors";
 
 interface Props {
   id: string;
@@ -15,7 +16,7 @@ const FeaturedRow: React.FC<Props> = ({ description, title, restaurants }) => {
     <View>
       <View className="mt-4 flex-row items-center justify-between px-4">
         <Text className="font-bold text-lg">{title}</Text>
-        <ArrowRightIcon color="#00CCBB" />
+        <ArrowRightIcon color={colors.main} />
       </View>
       <Text className="text-sm text-gray-500 px-4">{description}</Text>
 

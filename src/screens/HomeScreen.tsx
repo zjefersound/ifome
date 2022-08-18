@@ -12,6 +12,7 @@ import Categories from "../components/Categories";
 import FeaturedRow from "../components/FeaturedRow";
 import featuredService from "../services/featuredService";
 import IFeatured from "../models/IFeatured";
+import colors from "../theme/colors";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -42,10 +43,10 @@ const HomeScreen = () => {
           <Text className="font-bold text-gray-400 text-xs">Deliver Now!</Text>
           <View className="flex-row items-center">
             <Text className="font-bold text-xl">Current location</Text>
-            <ChevronDownIcon size={20} color="#00CCBB" />
+            <ChevronDownIcon size={20} color={colors.main} />
           </View>
         </View>
-        <UserIcon size={35} color="#00CCBB" />
+        <UserIcon size={35} color={colors.main} />
       </View>
 
       {/* Search */}
@@ -58,7 +59,7 @@ const HomeScreen = () => {
           />
         </View>
 
-        <AdjustmentsIcon color="#00CCBB" />
+        <AdjustmentsIcon color={colors.main} />
       </View>
 
       {/* Body */}
