@@ -51,7 +51,7 @@ export default {
       type: "reference",
       title: "Category",
       validation: (Rule) => Rule.required(),
-      to: [{ type: "category" }],
+      to: [{ type: "menuCategory" }],
     },
     {
       name: "dishes",

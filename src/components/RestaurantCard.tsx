@@ -2,10 +2,12 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { StarIcon } from "react-native-heroicons/solid";
 import { LocationMarkerIcon } from "react-native-heroicons/outline";
+import ISanityImage from "../models/ISanityImage";
+import { urlFor } from "../config/sanity";
 
 interface Props {
-  id: number;
-  imageUrl: string;
+  id: string;
+  image: ISanityImage;
   title: string;
   rating: number;
   genre: string;
@@ -17,7 +19,7 @@ interface Props {
 }
 
 const RestaurantCard: React.FC<Props> = ({
-  imageUrl,
+  image,
   title,
   rating,
   genre,
@@ -25,7 +27,7 @@ const RestaurantCard: React.FC<Props> = ({
 }) => {
   return (
     <TouchableOpacity className="bg-white mr-3 shadow-lg">
-      <Image source={{ uri: imageUrl }} className="h-36 w-64" />
+      <Image source={{ uri: urlFor(image).url() }} className="h-36 w-64" />
       <View className="px-3 pb-4">
         <Text className="font-bold text-lg pt-2">{title}</Text>
         <View className="flex-row items-center space-x-1">

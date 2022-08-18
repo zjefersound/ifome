@@ -1,5 +1,5 @@
 import { Image, ScrollView, Text, TextInput, View } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -10,9 +10,16 @@ import {
 } from "react-native-heroicons/outline";
 import Categories from "../components/Categories";
 import FeaturedRow from "../components/FeaturedRow";
+import featuredService from "../services/featuredService";
+import IFeatured from "../models/IFeatured";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [featuredCategories, setFeaturedCategories] = useState<IFeatured[]>([]);
+
+  useEffect(() => {
+    featuredService.getAll().then((data) => setFeaturedCategories(data));
+  }, []);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -58,24 +65,16 @@ const HomeScreen = () => {
       <ScrollView className="bg-gray-100 mt-3">
         {/* Categories */}
         <Categories />
-        {/* Featured*/}
-        <FeaturedRow
-          id="123"
-          title="Featured"
-          description="Paid placements from our partners"
-        />
-        {/* Tasty Discounts */}
-        <FeaturedRow
-          id="124"
-          title="Tasty Discounts"
-          description="Everyone's been enjoying these juicy discounts!"
-        />
-        {/* Near you */}
-        <FeaturedRow
-          id="125"
-          title="Offers near you!"
-          description="Why not support your local restaurant tonight!"
-        />
+        {/* Featured Rows */}
+        {featuredCategories.map((featured) => (
+          <FeaturedRow
+            key={featured._id}
+            id={featured._id}
+            title={featured.name}
+            description={featured.short_description}
+            restaurants={featured.restaurants}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
