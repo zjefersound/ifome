@@ -13,28 +13,27 @@ import { StarIcon } from "react-native-heroicons/solid";
 import { IRestaurantScreenParams } from "../routes/Router";
 import DishRow from "../components/DishRow";
 import BasketIcon from "../components/BasketIcon";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setRestaurant } from "../features/restaurant/restaurantSlice";
 
 const RestaurantScreen = () => {
   const { params } = useRoute();
-  const {
-    id,
-    image,
-    title,
-    rating,
-    genre,
-    address,
-    short_description,
-    dishes,
-    long,
-    lat,
-  } = params as IRestaurantScreenParams;
+  const { image, title, rating, genre, address, short_description, dishes } =
+    params as IRestaurantScreenParams;
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setRestaurant(params as IRestaurantScreenParams));
+  }, []);
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
   }, []);
+
   return (
     <>
       <BasketIcon />

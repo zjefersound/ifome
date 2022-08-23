@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import ISanityImage from "../../models/ISanityImage";
 
-interface BasketItem {
+export interface BasketItem {
   id: string;
   image: ISanityImage;
   name: string;
@@ -40,10 +40,13 @@ export const basketSlice = createSlice({
 });
 
 export const { addToBasket, removeFromBasket } = basketSlice.actions;
-export const selectBasketItems = (state) => state.basket.items;
-export const selectBasketItemsById = (state, id) =>
-  state.basket.items.filter((item) => item.id === id);
-export const selectBasketTotal = (state) =>
+export const selectBasketItems: (state: any) => BasketItem[] = (state) =>
+  state.basket.items;
+export const selectBasketItemsById: (state: any, id: string) => BasketItem[] = (
+  state,
+  id
+) => state.basket.items.filter((item) => item.id === id);
+export const selectBasketTotal: (state: any) => number = (state) =>
   state.basket.items.reduce((total, item) => (total += item.price), 0);
 
 export default basketSlice.reducer;
