@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import ISanityImage from "../models/ISanityImage";
-import { formatCurrency } from "react-native-format-currency";
 import { urlFor } from "../config/sanity";
 import { MinusCircleIcon, PlusCircleIcon } from "react-native-heroicons/solid";
 import colors from "../theme/colors";
@@ -11,6 +10,7 @@ import {
   removeFromBasket,
   selectBasketItemsById,
 } from "../features/basket/basketSlice";
+import { toCurrency } from "../helpers";
 interface Props {
   id: string;
   image: ISanityImage;
@@ -22,9 +22,6 @@ const DishRow: React.FC<Props> = ({ id, image, name, description, price }) => {
   const [isPressed, setIsPressed] = useState(false);
   const dispatch = useDispatch();
   const items = useSelector((state) => selectBasketItemsById(state, id));
-
-  const format = (amount) =>
-    formatCurrency({ amount: amount.toFixed(2), code: "BRL" })[0];
 
   const addItemToBasket = () => {
     dispatch(addToBasket({ id, image, name, description, price }));
@@ -42,7 +39,7 @@ const DishRow: React.FC<Props> = ({ id, image, name, description, price }) => {
           <View className="flex-1">
             <Text className="text-lg mb-1">{name}</Text>
             <Text className="text-gray-400">{description}</Text>
-            <Text className="text-gray-600 mt-2">{format(price)}</Text>
+            <Text className="text-gray-600 mt-2">{toCurrency(price)}</Text>
           </View>
 
           <Image
