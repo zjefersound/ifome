@@ -1,7 +1,7 @@
 const colors = {
-  main: "#00CCBB",
-  mainDark: "#01A296",
-  green: "#16a34a",
+  main: "#2460DA",
+  mainDark: "#2343BA",
+  green: "#FEC002",
 };
 
 export default colors;

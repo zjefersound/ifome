@@ -5,6 +5,8 @@ import RestaurantScreen from "../screens/RestaurantScreen";
 import ISanityImage from "../models/ISanityImage";
 import IDish from "../models/IDish";
 import BasketScreen from "../screens/BasketScreen";
+import PreparingOrderScreen from "../screens/PreparingOrderScreen";
+import DeliveryScreen from "../screens/DeliveryScreen";
 
 export interface IRestaurantScreenParams {
   id: string;
@@ -22,6 +24,8 @@ export interface IRestaurantScreenParams {
 export type RootStackParamList = {
   Home: {};
   Basket: {};
+  PreparingOrder: {};
+  Delivery: {};
   Restaurant: IRestaurantScreenParams;
 };
 
@@ -36,6 +40,16 @@ const Router = () => {
         name="Basket"
         options={{ presentation: "transparentModal", headerShown: false }}
         component={BasketScreen}
+      />
+      <Stack.Screen
+        name="PreparingOrder"
+        options={{ presentation: "fullScreenModal", headerShown: false }}
+        component={PreparingOrderScreen}
+      />
+      <Stack.Screen
+        name="Delivery"
+        options={{ presentation: "fullScreenModal", headerShown: false }}
+        component={DeliveryScreen}
       />
     </Stack.Navigator>
   );

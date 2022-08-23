@@ -9,11 +9,14 @@ import { XIcon } from "react-native-heroicons/outline";
 import colors from "../theme/colors";
 import { urlFor } from "../config/sanity";
 import { toCurrency } from "../helpers";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../routes/Router";
 
 const BasketScreen = () => {
   const deliveryFee = 10;
 
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const restaurant = useSelector(selectRestaurant);
   const basketTotal = useSelector(selectBasketTotal);
   const items = useSelector(selectBasketItems);
@@ -93,7 +96,10 @@ const BasketScreen = () => {
             <Text>Order total</Text>
             <Text className="font-extrabold">{toCurrency(basketTotal + deliveryFee)}</Text>
           </View>
-          <TouchableOpacity 
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('PreparingOrder')
+            }}
             style={{ backgroundColor: colors.mainDark }}
             className="rounded-lg p-4 "
           >
