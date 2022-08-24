@@ -32,7 +32,7 @@ const BasketScreen = () => {
   }, [items]);
 
   return (
-    <SafeAreaView className="bg-white flex-1 mt-4 rounded-lg shadow-xl">
+    <SafeAreaView className="bg-white flex-1 shadow-xl">
       <View className="bg-gray-100 flex-1">
         <View className="p-5 pt-0 border-b border-gray-400 bg-white shadow-sm">
           <View>
